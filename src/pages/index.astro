@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Magic Mark 2026">
+  <div class="hero-section">
+    <img 
+      src="https://res.cloudinary.com/dw1mtnug2/image/upload/v1766973361/mark/Collateral_2_-_Card_Trick_sczwsy.jpg" 
+      alt="Magic Mark 2026"
+      class="hero-image"
+    />
+    <div class="hero-overlay">
+      <a href="/tour-dates" class="tour-dates-box">SEE TOUR DATES</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero-section {
+    width: 100%;
+    background: #13151a;
+    position: relative;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-position: top center;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  
+  .tour-dates-box {
+    background: rgba(0, 0, 0, 0.6);
+    color: #f0ca74;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: block;
+    border: 2px solid #f0ca74;
+    transition: all 0.3s ease;
+  }
+  
+  .tour-dates-box:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .tour-dates-box {
+      font-size: 1.25rem;
+      padding: 1.25rem 2rem;
+    }
+  }
+</style>

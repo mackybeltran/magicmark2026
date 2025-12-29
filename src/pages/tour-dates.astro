@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Tour Dates">
+  <div class="tour-dates-container">
+    <div class="year-tabs">
+      <span class="year-link active" data-year="2025">2025</span>
+      <span class="year-link" data-year="2026">2026</span>
+    </div>
+
+    <div id="dates-2025" class="dates-container">
+      <h2>European Tour 2025</h2>
+      <ul class="dates-list">
+        <li>
+          <span class="city">London</span>
+          <span class="date">July 15, 2025</span>
+        </li>
+        <li>
+          <span class="city">Paris</span>
+          <span class="date">July 22, 2025</span>
+        </li>
+        <li>
+          <span class="city">Berlin</span>
+          <span class="date">August 5, 2025</span>
+        </li>
+        <li>
+          <span class="city">Amsterdam</span>
+          <span class="date">August 12, 2025</span>
+        </li>
+        <li>
+          <span class="city">Barcelona</span>
+          <span class="date">August 20, 2025</span>
+        </li>
+      </ul>
+    </div>
+
+    <div id="dates-2026" class="dates-container hidden">
+      <h2>Asian Tour 2026</h2>
+      <ul class="dates-list">
+        <li>
+          <span class="city">Tokyo</span>
+          <span class="date">July 10, 2026</span>
+        </li>
+        <li>
+          <span class="city">Seoul</span>
+          <span class="date">July 18, 2026</span>
+        </li>
+        <li>
+          <span class="city">Singapore</span>
+          <span class="date">August 2, 2026</span>
+        </li>
+        <li>
+          <span class="city">Bangkok</span>
+          <span class="date">August 10, 2026</span>
+        </li>
+        <li>
+          <span class="city">Hong Kong</span>
+          <span class="date">August 22, 2026</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const yearLinks = document.querySelectorAll('.year-link');
+    const dates2025 = document.getElementById('dates-2025');
+    const dates2026 = document.getElementById('dates-2026');
+
+    if (!dates2025 || !dates2026) return;
+
+    yearLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const year = link.getAttribute('data-year');
+        
+        // Hide all date containers
+        dates2025.classList.add('hidden');
+        dates2026.classList.add('hidden');
+        
+        // Remove active class from all links
+        yearLinks.forEach((l) => l.classList.remove('active'));
+        
+        // Show selected year's dates and mark link as active
+        if (year === '2025') {
+          dates2025.classList.remove('hidden');
+          link.classList.add('active');
+        } else if (year === '2026') {
+          dates2026.classList.remove('hidden');
+          link.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 60px);
+    width: 100%;
+    padding: 4rem 2rem;
+  }
+  
+  .tour-dates-container {
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .year-tabs {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .year-link {
+    color: rgba(240, 202, 116, 0.6);
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  
+  .year-link:hover {
+    color: rgba(240, 202, 116, 0.9);
+  }
+  
+  .year-link.active {
+    color: #f0ca74;
+    font-weight: 600;
+  }
+  
+  .dates-container {
+    animation: fadeIn 0.3s ease-in;
+  }
+  
+  .dates-container.hidden {
+    display: none;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #f0ca74;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .dates-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .dates-list li {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+  
+  .dates-list li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+  }
+  
+  .city {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #f0ca74;
+  }
+  
+  .date {
+    font-size: 1rem;
+    color: rgba(240, 202, 116, 0.7);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    main {
+      padding: 2rem 1rem;
+    }
+    
+    .year-link {
+      font-size: 1.25rem;
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+    }
+    
+    .dates-list li {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .city {
+      font-size: 1rem;
+    }
+    
+    .date {
+      font-size: 0.9rem;
+    }
+  }
+</style>

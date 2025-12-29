@@ -1,0 +1,117 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Magic Mark 2026" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/" class="navbar-title">MAGIC MARK</a>
+      <div class="navbar-links">
+        <a href="/tour-dates">TOUR DATES</a>
+        <a href="/media">MEDIA</a>
+        <a href="/about">ABOUT</a>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  html {
+    font-family: 'Open Sans', sans-serif;
+    background: #13151a;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    color: #f0ca74;
+  }
+  
+  .navbar {
+    background: #000;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .navbar-title {
+    color: #f0ca74;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .navbar-title:hover {
+    opacity: 0.8;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .navbar-links a {
+    color: #f0ca74;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.2s ease;
+  }
+  
+  .navbar-links a:hover {
+    opacity: 0.8;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .navbar-title {
+      font-size: 1.25rem;
+    }
+    
+    .navbar-links {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .navbar-links a {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
