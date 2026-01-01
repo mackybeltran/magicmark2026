@@ -2,9 +2,10 @@
 interface Props {
   title: string;
   description?: string;
+  fullWidth?: boolean;
 }
 
-const { title, description = "Magic Mark 2026" } = Astro.props;
+const { title, description = "Magic Mark 2026", fullWidth = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,16 +25,18 @@ const { title, description = "Magic Mark 2026" } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class={fullWidth ? 'full-width' : ''}>
     <nav class="navbar">
-      <a href="/" class="navbar-title">MAGIC MARK</a>
-      <div class="navbar-links">
-        <a href="/tour-dates">TOUR DATES</a>
-        <a href="/media">MEDIA</a>
-        <a href="/about">ABOUT</a>
+      <div class="navbar-container">
+        <a href="/" class="navbar-title">MAGIC MARK</a>
+        <div class="navbar-links">
+          <a href="/tour-dates">TOUR DATES</a>
+          <a href="/media">MEDIA</a>
+          <a href="/about">ABOUT</a>
+        </div>
       </div>
     </nav>
-    <main>
+    <main class={fullWidth ? 'full-width' : 'constrained-width'}>
       <slot />
     </main>
   </body>
@@ -42,25 +45,62 @@ const { title, description = "Magic Mark 2026" } = Astro.props;
 <style>
   html {
     font-family: 'Open Sans', sans-serif;
-    background: #13151a;
+    background: #000;
   }
   
   body {
     margin: 0;
     padding: 0;
     color: #f0ca74;
+    background: #000;
+  }
+  
+  body.full-width {
+    background: #13151a;
+  }
+  
+  main.constrained-width {
+    max-width: 1228px;
+    margin: 0 auto;
+    background: #13151a;
+    min-height: calc(100vh - 60px);
+  }
+  
+  main.full-width {
+    background: #13151a;
+  }
+  
+  @media (max-width: 768px) {
+    main.constrained-width {
+      max-width: 100%;
+    }
+    
+    body {
+      background: #13151a;
+    }
+    
+    html {
+      background: #13151a;
+    }
   }
   
   .navbar {
     background: #000;
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 0;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    width: 100%;
+  }
+  
+  .navbar-container {
+    max-width: 1228px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .navbar-title {
@@ -93,10 +133,11 @@ const { title, description = "Magic Mark 2026" } = Astro.props;
   }
   
   @media (max-width: 768px) {
-    .navbar {
+    .navbar-container {
       padding: 1.5rem;
       flex-direction: column;
       gap: 1rem;
+      max-width: 100%;
     }
     
     .navbar-title {

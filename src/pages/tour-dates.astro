@@ -5,58 +5,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="Tour Dates">
   <div class="tour-dates-container">
     <div class="year-tabs">
-      <span class="year-link active" data-year="2025">2025</span>
-      <span class="year-link" data-year="2026">2026</span>
+      <span class="year-link" data-year="2025">2025</span>
+      <span class="year-link active" data-year="2026">2026</span>
     </div>
-
-    <div id="dates-2025" class="dates-container">
-      <h2>European Tour 2025</h2>
-      <ul class="dates-list">
+    <div id="dates-2025" class="dates-container hidden">
+      <h2>2023/2024/2025 TOUR DATES</h2>
+      <ul class="dates-list">   
         <li>
-          <span class="city">London</span>
-          <span class="date">July 15, 2025</span>
+          <span class="city">Fantaco Magic Fest, Taipei</span>
+          <span class="date">Nov 8-9, 2025</span>
         </li>
         <li>
-          <span class="city">Paris</span>
-          <span class="date">July 22, 2025</span>
+          <span class="city">Berlin Lacht, Germany</span>
+          <span class="date">Sept 8-11, 2025</span>
         </li>
         <li>
-          <span class="city">Berlin</span>
-          <span class="date">August 5, 2025</span>
+          <span class="city">Pilsner Buskerfest, Chechia</span>
+          <span class="date">Sept 3-6, 2025</span>
         </li>
         <li>
-          <span class="city">Amsterdam</span>
-          <span class="date">August 12, 2025</span>
+          <span class="city">Artistes de Rue, Vevey, Switzerland</span>
+          <span class="date">2024</span>
         </li>
         <li>
-          <span class="city">Barcelona</span>
-          <span class="date">August 20, 2025</span>
+          <span class="city">Stramu Würzburg, Germany</span>
+          <span class="date">2024</span>
+        </li>
+        <li>
+          <span class="city">Pflasterspektakel, Linz, Austria</span>
+          <span class="date">2023</span>
+        </li>
+        <li>
+          <span class="city">Buntes Plaster, Marktredwitz, </span>
+          <span class="date">2023</span>
+        </li>
+        <li>
+          <span class="city">Pflasterspektakel, Linz, Austria</span>
+          <span class="date">2023</span>
         </li>
       </ul>
     </div>
 
-    <div id="dates-2026" class="dates-container hidden">
-      <h2>Asian Tour 2026</h2>
-      <ul class="dates-list">
+    <div id="dates-2026" class="dates-container">
+      <h2>2026 TOUR DATES. MORE TO COME!</h2>
+      <ul class="dates-list"> 
         <li>
-          <span class="city">Tokyo</span>
-          <span class="date">July 10, 2026</span>
-        </li>
-        <li>
-          <span class="city">Seoul</span>
-          <span class="date">July 18, 2026</span>
-        </li>
-        <li>
-          <span class="city">Singapore</span>
-          <span class="date">August 2, 2026</span>
-        </li>
-        <li>
-          <span class="city">Bangkok</span>
-          <span class="date">August 10, 2026</span>
-        </li>
-        <li>
-          <span class="city">Hong Kong</span>
-          <span class="date">August 22, 2026</span>
+          <span class="city">Hut ab! Festival, Bielefeld, Germany</span>
+          <span class="date">Apr 12, 2026</span>
         </li>
       </ul>
     </div>
@@ -97,16 +92,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style>
   main {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: calc(100vh - 60px);
     width: 100%;
     padding: 4rem 2rem;
   }
   
   .tour-dates-container {
-    max-width: 800px;
     width: 100%;
   }
   
@@ -114,6 +104,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     gap: 2rem;
     margin-bottom: 3rem;
+    margin-left: 16px;
   }
   
   .year-link {
@@ -137,7 +128,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .dates-container {
     animation: fadeIn 0.3s ease-in;
   }
-  
   .dates-container.hidden {
     display: none;
   }
@@ -146,6 +136,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 2rem;
+    margin-left: 16px;
     color: #f0ca74;
     text-transform: uppercase;
     letter-spacing: 0.05em;
