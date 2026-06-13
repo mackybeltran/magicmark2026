@@ -363,12 +363,12 @@ footer{background:#060606;padding:2.5rem 3rem;border-top:1px solid var(--border)
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#reel" onclick="closeMobile()">Watch</a>
-  <a href="#about" onclick="closeMobile()">The Act</a>
-  <a href="#specs" onclick="closeMobile()">Specs</a>
-  <a href="#gallery" onclick="closeMobile()">Gallery</a>
-  <a href="#festivals" onclick="closeMobile()">Festivals</a>
-  <a href="#booking" onclick="closeMobile()" class="m-cta">Book Now</a>
+  <a href="#reel" onclick="return closeMobile('#reel')">Watch</a>
+  <a href="#about" onclick="return closeMobile('#about')">The Act</a>
+  <a href="#specs" onclick="return closeMobile('#specs')">Specs</a>
+  <a href="#gallery" onclick="return closeMobile('#gallery')">Gallery</a>
+  <a href="#festivals" onclick="return closeMobile('#festivals')">Festivals</a>
+  <a href="#booking" onclick="return closeMobile('#booking')" class="m-cta">Book Now</a>
 </div>
 
 
@@ -778,7 +778,17 @@ hamburger.addEventListener('click', () => {
   mobileMenu.classList.toggle('open');
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 });
-function closeMobile() {
+function closeMobile(target) {
+  if (target) {
+    var el = document.querySelector(target);
+    if (el) {
+      hamburger.classList.remove("active");
+      mobileMenu.classList.remove("open");
+      document.body.style.overflow = "";
+      setTimeout(function() { el.scrollIntoView({behavior: "smooth"}); }, 50);
+      return false;
+    }
+  }
   hamburger.classList.remove('active');
   mobileMenu.classList.remove('open');
   document.body.style.overflow = '';
